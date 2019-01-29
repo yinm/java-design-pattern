@@ -1,0 +1,33 @@
+@startuml
+
+
+package フレームワーク {
+  abstract Creator {
+    create()
+    {abstract} factoryMethod()
+  }
+
+  abstract Product {
+    {abstract} method1()
+    {abstract} method2()
+    {abstract} method3()
+  }
+}
+
+package 具体的な肉付け {
+  class ConcreteCreator {
+    factoryMethod()
+  }
+  class ConcreteProduct {
+    method1()
+    method2()
+    method3()
+  }
+}
+
+Creator -r-> Product : Creates >
+ConcreteCreator -r-> ConcreteProduct : Creates >
+ConcreteCreator -u-|> Creator
+ConcreteProduct -u-|> Product
+
+@enduml
