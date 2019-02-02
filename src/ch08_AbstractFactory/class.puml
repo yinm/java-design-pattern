@@ -1,0 +1,62 @@
+@startuml
+
+package factory {
+  abstract AbstractProduct1 {
+    {abstract} executeA()
+    {abstract} executeB()
+  }
+
+  abstract AbstractProduct2 {
+    {abstract} doAlpha()
+    {abstract} doBeta()
+  }
+
+  abstract AbstractProduct3 {
+    {abstract} performOne()
+    {abstract} performTwo()
+  }
+
+  abstract AbstractFactory {
+    {abstract} createProduct1
+    {abstract} createProduct2
+    {abstract} createProduct3
+  }
+
+  AbstractFactory -u-> AbstractProduct1 : Creates >
+  AbstractFactory -u-> AbstractProduct2 : Creates >
+  AbstractFactory -u-> AbstractProduct3 : Creates >
+}
+
+package concretefactory {
+  class ConcreteProduct1 {
+    executeA()
+    executeB()
+  }
+
+  class ConcreteProduct2 {
+    doAlpha()
+    doBeta()
+  }
+
+  class ConcreteProduct3 {
+    performOne()
+    performTwo()
+  }
+
+  class ConcreteFactory {
+    concreteProduct1()
+    concreteProduct2()
+    concreteProduct3()
+  }
+
+  ConcreteFactory -u-> ConcreteProduct1 : Creates >
+  ConcreteFactory -u-> ConcreteProduct2 : Creates >
+  ConcreteFactory -u-> ConcreteProduct3 : Creates >
+}
+
+ConcreteProduct1 -l-|> AbstractProduct1
+ConcreteProduct2 -l-|> AbstractProduct2
+ConcreteProduct3 -l-|> AbstractProduct3
+ConcreteFactory -l-|> AbstractFactory
+
+@enduml
